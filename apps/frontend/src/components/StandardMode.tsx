@@ -89,13 +89,13 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
             </button>
           </nav>
           <div className="flex items-center gap-md">
-            {/* <button 
+            <button 
               className="flex px-md py-xs rounded-xl border border-primary text-primary font-bold hover:bg-primary-container hover:text-on-primary-container transition-all items-center gap-xs"
               onClick={onEnterAdmin}
             >
               <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
               <span className="hidden sm:inline">Admin</span>
-            </button> */}
+            </button>
             <button className="bg-error text-on-error px-md py-xs rounded-xl font-bold flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all shadow-md shadow-error/20" onClick={onEnterIgd}>
               <span className="material-symbols-outlined text-[18px]">emergency</span>
               Mode IGD
