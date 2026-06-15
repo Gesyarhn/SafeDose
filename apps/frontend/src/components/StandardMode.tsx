@@ -9,11 +9,12 @@ import Panduan from './Panduan';
 
 interface StandardModeProps {
   onEnterIgd: () => void;
+  onEnterAdmin: () => void;
 }
 
 type TabType = 'kalkulator' | 'database' | 'panduan';
 
-const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd }) => {
+const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin }) => {
   const [activeTab, setActiveTab] = useState<TabType>('kalkulator');
   const [currentStep, setCurrentStep] = useState(1);
   const [patient, setPatient] = useState<PatientData>({ age: 0, weight: 0, gender: '', conditions: [] });
