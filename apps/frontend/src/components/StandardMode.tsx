@@ -67,7 +67,7 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
     <div className="flex flex-col min-h-screen">
       <header className="docked full-width top-0 sticky z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm">
         <div className="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-16">
-          <div className="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">SafeDose</div>
+          <div className="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">Mediku</div>
           <nav className="hidden md:flex gap-lg h-full items-end">
             <button
               onClick={() => setActiveTab('kalkulator')}
@@ -191,8 +191,8 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
 
       <footer className="w-full py-xl px-margin-desktop max-w-container-max mx-auto border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md mt-xl">
         <div className="flex flex-col gap-xs">
-          <span className="text-body-md font-bold text-primary dark:text-primary-fixed">SafeDose</span>
-          <p className="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-variant">© 2024 SafeDose Indonesia. Dibuat untuk profesional medis.</p>
+          <span className="text-body-md font-bold text-primary dark:text-primary-fixed">Mediku</span>
+          <p className="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-variant">© 2024 Mediku Indonesia. Dibuat untuk profesional medis.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-lg">
           <a className="text-label-caps font-label-caps text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Tentang Kami</a>

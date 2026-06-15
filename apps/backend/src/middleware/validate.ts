@@ -13,12 +13,16 @@ export function validate(schema: ZodSchema, source: "body" | "query" | "params" 
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       const parsed = schema.parse((req as any)[source]);
+      
       if (source === "query") {
-        for (const key of Object.keys(req.query)) delete req.query[key as keyof typeof req.query];
+        // Safe way to merge parsed query without reassigning the getter
+        Object.keys(req.query).forEach(key => { delete req.query[key]; });
         Object.assign(req.query, parsed);
       } else {
         (req as any)[source] = parsed;
       }
+      
+      (req as any).validatedData = parsed;
       next();
     } catch (error) {
       if (error instanceof ZodError) {

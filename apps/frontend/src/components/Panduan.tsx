@@ -5,7 +5,7 @@ const Panduan: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-sm">
         <h1 className="text-headline-md font-headline-md text-on-surface uppercase tracking-tight">Panduan Penggunaan</h1>
-        <p className="text-body-md text-on-surface-variant">Pelajari cara memaksimalkan fitur SafeDose untuk praktik klinis Anda.</p>
+        <p className="text-body-md text-on-surface-variant">Pelajari cara memaksimalkan fitur Mediku untuk praktik klinis Anda.</p>
       </div>
 
       <div className="space-y-lg">
@@ -16,7 +16,7 @@ const Panduan: React.FC = () => {
             <h2 className="font-bold text-headline-sm text-on-surface">Kalkulator Dosis (Standar)</h2>
           </div>
           <div className="p-lg space-y-4 text-body-md text-on-surface-variant">
-            <p>Fitur utama SafeDose digunakan untuk menghitung dosis harian dan volume sediaan cair dengan presisi tinggi.</p>
+            <p>Fitur utama Mediku digunakan untuk menghitung dosis harian dan volume sediaan cair dengan presisi tinggi.</p>
             <ol className="list-decimal pl-5 space-y-2">
               <li><b>Profil Pasien:</b> Masukkan Usia, Berat Badan, dan kondisi klinis. Jika pasien anak (≤ 18 tahun), jenis kelamin wajib diisi.</li>
               <li><b>Pilih Obat:</b> Cari obat yang ingin diresepkan. Obat difilter berdasarkan indikasi yang aman.</li>
@@ -50,7 +50,7 @@ const Panduan: React.FC = () => {
           </div>
           <div className="p-lg space-y-4 text-body-md text-on-surface-variant">
             <p>
-              SafeDose bertindak sebagai <b>Alat Bantu Pendukung Keputusan (Clinical Decision Support)</b>. Aplikasi ini <b>TIDAK MENGGANTIKAN</b> penilaian klinis independen dokter, apoteker, atau perawat yang menangani pasien langsung.
+              Mediku bertindak sebagai <b>Alat Bantu Pendukung Keputusan (Clinical Decision Support)</b>. Aplikasi ini <b>TIDAK MENGGANTIKAN</b> penilaian klinis independen dokter, apoteker, atau perawat yang menangani pasien langsung.
             </p>
             <p>Selalu verifikasi ulang dosis akhir, indikasi, dan kontraindikasi dengan kondisi aktual pasien serta pedoman formularium rumah sakit setempat sebelum melakukan instruksi pengobatan.</p>
           </div>
