@@ -14,7 +14,7 @@ interface StandardModeProps {
 
 type TabType = 'kalkulator' | 'database' | 'panduan';
 
-const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin }) => {
+const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin: _onEnterAdmin }) => {
   const [activeTab, setActiveTab] = useState<TabType>('kalkulator');
   const [currentStep, setCurrentStep] = useState(1);
   const [patient, setPatient] = useState<PatientData>({ age: 0, weight: 0, gender: '', conditions: [] });
@@ -63,6 +63,10 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
     }
   };
 
+  const handleAdminClick = () => {
+    _onEnterAdmin();
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="docked full-width top-0 sticky z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm">
@@ -89,14 +93,17 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
             </button>
           </nav>
           <div className="flex items-center gap-md">
-            <button 
+            <button
               className="flex px-md py-xs rounded-xl border border-primary text-primary font-bold hover:bg-primary-container hover:text-on-primary-container transition-all items-center gap-xs"
-              onClick={onEnterAdmin}
+              onClick={handleAdminClick}
             >
               <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
               <span className="hidden sm:inline">Admin</span>
             </button>
-            <button className="bg-error text-on-error px-md py-xs rounded-xl font-bold flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all shadow-md shadow-error/20" onClick={onEnterIgd}>
+            <button
+              className="bg-error text-on-error px-md py-xs rounded-xl font-bold flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all shadow-md shadow-error/20"
+              onClick={onEnterIgd}
+            >
               <span className="material-symbols-outlined text-[18px]">emergency</span>
               Mode IGD
             </button>
@@ -106,10 +113,8 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
 
       <main className="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-xl overflow-x-hidden">
 
-        {/* Render Kalkulator Flow */}
         {activeTab === 'kalkulator' && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            {/* Step Indicator */}
             <div className="mb-10 w-full max-w-3xl mx-auto">
               <div className="flex items-center justify-between relative">
                 <div className="absolute top-1/2 left-0 w-full h-1 bg-surface-container-highest -translate-y-1/2 z-0"></div>
@@ -119,17 +124,14 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
                   {renderStepIcon(1)}
                   <span className={`text-label-caps font-label-caps mt-2 ${currentStep >= 1 ? 'text-primary' : 'text-on-surface-variant'}`}>Pasien</span>
                 </div>
-
                 <div className="relative z-10 flex flex-col items-center cursor-pointer transition-all hover:opacity-80" onClick={() => setCurrentStep(2)}>
                   {renderStepIcon(2)}
                   <span className={`text-label-caps font-label-caps mt-2 ${currentStep >= 2 ? 'text-primary' : 'text-on-surface-variant'}`}>Obat</span>
                 </div>
-
                 <div className="relative z-10 flex flex-col items-center cursor-pointer transition-all hover:opacity-80" onClick={() => setCurrentStep(3)}>
                   {renderStepIcon(3)}
                   <span className={`text-label-caps font-label-caps mt-2 ${currentStep >= 3 ? 'text-primary' : 'text-on-surface-variant'}`}>Parameter</span>
                 </div>
-
                 <div className="relative z-10 flex flex-col items-center cursor-pointer transition-all hover:opacity-80" onClick={() => setCurrentStep(4)}>
                   {renderStepIcon(4)}
                   <span className={`text-label-caps font-label-caps mt-2 ${currentStep >= 4 ? 'text-primary' : 'text-on-surface-variant'}`}>Hasil</span>
@@ -137,20 +139,11 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
               </div>
             </div>
 
-            {/* Step Content */}
             {currentStep === 1 && (
-              <Step1Profil
-                patient={patient}
-                setPatient={setPatient}
-                onNext={() => setCurrentStep(2)}
-              />
+              <Step1Profil patient={patient} setPatient={setPatient} onNext={() => setCurrentStep(2)} />
             )}
             {currentStep === 2 && (
-              <Step2PilihObat
-                selectedDrug={drug}
-                onSelectDrug={handleSelectDrug}
-                onNext={() => setCurrentStep(3)}
-              />
+              <Step2PilihObat selectedDrug={drug} onSelectDrug={handleSelectDrug} onNext={() => setCurrentStep(3)} />
             )}
             {currentStep === 3 && (
               <Step3Parameter
@@ -177,15 +170,8 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
           </div>
         )}
 
-        {/* Render Database Obat */}
-        {activeTab === 'database' && (
-          <DatabaseObat />
-        )}
-
-        {/* Render Panduan */}
-        {activeTab === 'panduan' && (
-          <Panduan />
-        )}
+        {activeTab === 'database' && <DatabaseObat />}
+        {activeTab === 'panduan' && <Panduan />}
 
       </main>
 
@@ -201,7 +187,6 @@ const StandardMode: React.FC<StandardModeProps> = ({ onEnterIgd, onEnterAdmin })
         </div>
       </footer>
 
-      {/* Bottom Navigation Bar (Mobile only) */}
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 md:hidden bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
         <div
           className={`flex flex-col items-center justify-center rounded-xl px-3 py-1 scale-95 transition-all cursor-pointer ${activeTab === 'kalkulator' ? 'bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary' : 'text-on-surface-variant'}`}
